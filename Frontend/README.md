@@ -1,16 +1,133 @@
-# React + Vite
+# To-Do App | My First MERN Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This is my first MERN-style full-stack To-Do application built using React, Node.js, Express.js, and MongoDB Atlas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The application allows users to create, view, update, and delete tasks while storing data permanently in MongoDB Atlas.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Add new tasks
+* View all tasks
+* Edit existing tasks
+* Delete tasks
+* REST API integration
+* MongoDB Atlas database connectivity
+* Responsive user interface
+* Full CRUD operations
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+
+* React.js
+* Vite
+* JavaScript
+* CSS
+
+### Backend
+
+* Node.js
+* Express.js
+
+### Database
+
+* MongoDB Atlas
+
+## Project Structure
+
+```text
+Todo-backend/
+│
+├── Backend/
+│   ├── index.js
+│   ├── package.json
+│   └── .env
+│
+├── Frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+└── README.md
+```
+
+## Installation
+
+### Clone Repository
+
+```bash
+git clone <repository-url>
+```
+
+### Backend Setup
+
+```bash
+cd Backend
+npm install
+npm run dev
+```
+
+### Frontend Setup
+
+```bash
+cd Frontend
+npm install
+npm run dev
+```
+
+## Environment Variables
+
+Create a `.env` file inside the Backend folder:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+```
+
+## API Endpoints
+
+### Get All Tasks
+
+```http
+GET /tasks
+```
+
+### Create Task
+
+```http
+POST /tasks
+```
+
+### Update Task
+
+```http
+PUT /tasks/:id
+```
+
+### Delete Task
+
+```http
+DELETE /tasks/:id
+```
+
+## Learning Outcomes
+
+Through this project, I learned:
+
+* React component architecture
+* State management using Hooks
+* REST API development
+* Express.js routing
+* MongoDB Atlas integration
+* CRUD operations
+* Git and GitHub workflow
+* Full-stack application development
+
+## Author
+
+Tejaswi Thathuri
+
+## Project Title
+
+To-Do App — My First MERN Project
