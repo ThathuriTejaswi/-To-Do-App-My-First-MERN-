@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.todo-card {
+  
+  width: 700px;
+  background: white;
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.todo-card h1 {
+  text-align: center;
+  color: #444;
+  margin-bottom: 30px;
+  font-size: 64px;
+  font-weight: 400;
+}
+
+.input-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.input-section input {
+  flex: 1;
+  padding: 14px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 18px;
+    outline: none;
+}
+
+.input-section button {
+  min-width: 110px;
+  border: none;
+  border-radius: 12px;
+  background: #667eea;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.task-container {
+  margin-top: 25px;
+}
+
+.task-card {
+  background: #f8f9ff;
+  border-left: 6px solid #667eea;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.task-card:hover {
+  transform: translateX(8px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+}
+
+.edit-btn,
+.delete-btn {
+  width: 90px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.edit-btn {
+  background: #00b894;
+  margin-right: 10px;
+}
+
+.delete-btn {
+  background: #e74c3c;
+}
+
+.empty {
+  text-align: center;
+  color: gray;
+  font-style: italic;
+}
