@@ -1,7 +1,6 @@
 const dotenv = require("dotenv");
 const express = require("express");
 const cors = require("cors");
-
 const { MongoClient, ObjectId } = require("mongodb");
 
 dotenv.config();
@@ -11,14 +10,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-let db;
 let tasksCollection;
 
 MongoClient.connect(process.env.MONGO_URI)
   .then((client) => {
-    db = client.db("todoDB");
+    const db = client.db("todoDB");
     tasksCollection = db.collection("tasks");
+
     console.log("MongoDB connected successfully");
+
+    // Start server only after MongoDB connects
+    app.listen(5000, () => {
+      console.log("Server running on 5000");
+    });
   })
   .catch((error) => {
     console.log("MongoDB connection error:", error);
@@ -26,6 +30,7 @@ MongoClient.connect(process.env.MONGO_URI)
 
 app.get("/tasks", async (req, res) => {
   try {
+    console.log("tasksCollection:", tasksCollection);
     const tasks = await tasksCollection.find().toArray();
     res.json(tasks);
   } catch (error) {
@@ -45,18 +50,6 @@ app.post("/tasks", async (req, res) => {
   }
 });
 
-app.delete("/tasks/:id", async (req, res) => {
-  try {
-    await tasksCollection.deleteOne({
-      _id: new ObjectId(req.params.id),
-    });
-
-    res.json({ message: "Task deleted" });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
 app.put("/tasks/:id", async (req, res) => {
   try {
     await tasksCollection.updateOne(
@@ -70,6 +63,14 @@ app.put("/tasks/:id", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log("Server running on 5000");
+app.delete("/tasks/:id", async (req, res) => {
+  try {
+    await tasksCollection.deleteOne({
+      _id: new ObjectId(req.params.id),
+    });
+
+    res.json({ message: "Task deleted" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
