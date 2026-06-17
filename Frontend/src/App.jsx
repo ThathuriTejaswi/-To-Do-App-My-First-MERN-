@@ -3,6 +3,8 @@ import "./App.css";
 import TaskInput from "./components/TaskInput";
 import TaskList from "./components/TaskList";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function App() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
@@ -10,9 +12,15 @@ function App() {
 
   const fetchTasks = async () => {
     try {
-      const res = await fetch("http://localhost:5000/tasks");
+      const res = await fetch(`${API_URL}/tasks`);
       const data = await res.json();
-      setTasks(data);
+
+      if (Array.isArray(data)) {
+        setTasks(data);
+      } else {
+        setTasks([]);
+        console.error(data);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -25,7 +33,7 @@ function App() {
   const addTask = async () => {
     if (!task.trim()) return;
 
-    await fetch("http://localhost:5000/tasks", {
+    await fetch(`${API_URL}/tasks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +48,7 @@ function App() {
   const updateTask = async () => {
     if (!task.trim()) return;
 
-    await fetch(`http://localhost:5000/tasks/${editId}`, {
+    await fetch(`${API_URL}/tasks/${editId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +62,7 @@ function App() {
   };
 
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, {
+    await fetch(`${API_URL}/tasks/${id}`, {
       method: "DELETE",
     });
 
