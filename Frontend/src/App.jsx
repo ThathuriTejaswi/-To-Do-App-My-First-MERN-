@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import TaskInput from "./components/TaskInput";
-import TaskList from "./components/TaskList";
+import TaskInput from "./component/TaskInput";
+import TaskList from "./component/TaskList";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
